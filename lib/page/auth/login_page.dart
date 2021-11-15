@@ -108,7 +108,7 @@ class LoginPage extends StatelessWidget {
               ],
             ),
             CustomButton(
-              text: 'Daftar',
+              text: 'Login',
               onTap: () {
                 Navigator.pushNamed(context, '/main-page');
               },

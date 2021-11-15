@@ -4,6 +4,7 @@ import 'package:hafoo/bloc/page/page_cubit.dart';
 import 'package:hafoo/page/auth/login_page.dart';
 import 'package:hafoo/page/auth/register_page.dart';
 import 'package:hafoo/page/main_page.dart';
+import 'package:hafoo/page/profile/edit_profile.dart';
 import 'package:hafoo/page/splash_screen.dart';
 import 'package:hafoo/page/welcome_page.dart';
 
@@ -31,6 +32,7 @@ class MyApp extends StatelessWidget {
           ('/register'): (context) => RegisterPage(),
           ('/login'): (context) => LoginPage(),
           ('/main-page'): (context) => MainPage(),
+          ('/edit-profile'): (context) => EditProfilePage(),
         },
       ),
     );

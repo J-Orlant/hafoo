@@ -12,7 +12,7 @@ Color kBlackColor = Color(0xff000000);
 Color kRedColor = Color(0xffFF4D42).withOpacity(0.2);
 Color kGreenColor = Color(0xffC2FF42).withOpacity(0.2);
 Color kSubtitleColor = Color(0xff504F5E);
-
+Color secondaryColor = Color(0xff999999);
 // FontWeight
 FontWeight light = FontWeight.w300;
 FontWeight regular = FontWeight.w400;
@@ -37,6 +37,10 @@ TextStyle blackTextStyle = GoogleFonts.poppins(
 
 TextStyle subtitleTextStyle = GoogleFonts.poppins(
   color: kSubtitleColor,
+);
+
+TextStyle secondaryTextStyle = GoogleFonts.poppins(
+  color: secondaryColor,
 );
 
 // BoxShadow
