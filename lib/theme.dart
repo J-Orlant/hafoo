@@ -40,10 +40,9 @@ TextStyle subtitleTextStyle = GoogleFonts.poppins(
 );
 
 // BoxShadow
-List<BoxShadow> defaultBoxShadow = [
-  BoxShadow(
-    blurRadius: 5,
-    offset: Offset(0, 1),
-    color: kBlackColor.withOpacity(0.25),
-  ),
-];
+
+BoxShadow defaultBoxShadow = BoxShadow(
+  blurRadius: 5,
+  offset: Offset(0, 1),
+  color: kBlackColor.withOpacity(0.25),
+);

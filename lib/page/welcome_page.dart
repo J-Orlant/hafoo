@@ -45,7 +45,9 @@ class WelcomePage extends StatelessWidget {
             ),
             Expanded(
               child: InkWell(
-                onTap: () {},
+                onTap: () {
+                  Navigator.pushNamed(context, '/login');
+                },
                 child: Center(
                   child: Text(
                     'Masuk',

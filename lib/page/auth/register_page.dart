@@ -165,6 +165,10 @@ class RegisterPage extends StatelessWidget {
                   ),
                 ),
                 GestureDetector(
+                  onTap: () {
+                    Navigator.pop(context);
+                    Navigator.pushNamed(context, '/login');
+                  },
                   child: Text(
                     'Masuk',
                     style: yellowTextStyle.copyWith(
@@ -177,7 +181,7 @@ class RegisterPage extends StatelessWidget {
             CustomButton(
               text: 'Daftar',
               onTap: () {
-                // Navigator.pushNamed(context, '/main-page');
+                Navigator.pushNamed(context, '/main-page');
               },
             ),
             SizedBox(
@@ -202,6 +206,7 @@ class RegisterPage extends StatelessWidget {
                 GestureDetector(
                   onTap: () {
                     Navigator.pop(context);
+                    Navigator.pushNamed(context, '/welcome');
                   },
                   child: Icon(Icons.arrow_back_ios),
                 ),

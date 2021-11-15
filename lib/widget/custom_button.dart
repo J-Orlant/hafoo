@@ -3,7 +3,7 @@ import 'package:hafoo/theme.dart';
 
 class CustomButton extends StatelessWidget {
   final String text;
-  final Function onTap;
+  final Function() onTap;
   final EdgeInsets margin;
 
   const CustomButton({
@@ -17,8 +17,8 @@ class CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap(),
+    return InkWell(
+      onTap: onTap,
       child: Container(
         width: double.infinity,
         height: 53,
