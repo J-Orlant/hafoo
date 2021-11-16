@@ -21,11 +21,14 @@ class NavigationItem extends StatelessWidget {
       onTap: () {
         context.read<PageCubit>().setPage(index);
       },
-      child: Image.asset(
-        'assets/$icon',
-        width: width,
-        // TODO: BUG COLOR
-        color: (state == index) ? kYellowColor1 : kBlackColor,
+      child: SizedBox(
+        height: 68.5,
+        child: Image.asset(
+          'assets/$icon',
+          width: width,
+          // TODO: BUG COLOR
+          color: (state == index) ? kYellowColor1 : kBlackColor,
+        ),
       ),
     );
   }

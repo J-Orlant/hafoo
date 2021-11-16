@@ -33,9 +33,9 @@ class MainPage extends StatelessWidget {
         alignment: Alignment.bottomCenter,
         child: Container(
           width: double.infinity,
+          height: 68.5,
           padding: EdgeInsets.symmetric(
             horizontal: 35,
-            vertical: 22,
           ),
           decoration: BoxDecoration(
             color: kWhiteColor,
@@ -55,6 +55,7 @@ class MainPage extends StatelessWidget {
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: const [
               NavigationItem(
                 icon: 'icon_home.png',

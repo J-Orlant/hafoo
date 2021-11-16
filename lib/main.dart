@@ -7,6 +7,8 @@ import 'package:hafoo/page/main_page.dart';
 import 'package:hafoo/page/profile/edit_profile.dart';
 import 'package:hafoo/page/splash_screen.dart';
 import 'package:hafoo/page/welcome_page.dart';
+import 'package:hafoo/provider/kategori.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(MyApp());
@@ -24,16 +26,23 @@ class MyApp extends StatelessWidget {
           create: (context) => PageCubit(),
         ),
       ],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        routes: {
-          ('/'): (context) => SplashScreeen(),
-          ('/welcome'): (context) => WelcomePage(),
-          ('/register'): (context) => RegisterPage(),
-          ('/login'): (context) => LoginPage(),
-          ('/main-page'): (context) => MainPage(),
-          ('/edit-profile'): (context) => EditProfilePage(),
-        },
+      child: MultiProvider(
+        providers: [
+          ChangeNotifierProvider<Kategori>(
+            create: (context) => Kategori(),
+          ),
+        ],
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          routes: {
+            ('/'): (context) => SplashScreeen(),
+            ('/welcome'): (context) => WelcomePage(),
+            ('/register'): (context) => RegisterPage(),
+            ('/login'): (context) => LoginPage(),
+            ('/main-page'): (context) => MainPage(),
+            ('/edit-profile'): (context) => EditProfilePage(),
+          },
+        ),
       ),
     );
   }
