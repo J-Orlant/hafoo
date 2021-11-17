@@ -33,9 +33,9 @@ class MainPage extends StatelessWidget {
         alignment: Alignment.bottomCenter,
         child: Container(
           width: double.infinity,
-          height: 68.5,
+          height: 73,
           padding: EdgeInsets.symmetric(
-            horizontal: 35,
+            horizontal: 53,
           ),
           decoration: BoxDecoration(
             color: kWhiteColor,
@@ -46,17 +46,12 @@ class MainPage extends StatelessWidget {
                 color: kBlackColor.withOpacity(0.25),
               ),
             ],
-            borderRadius: BorderRadius.circular(40),
-          ),
-          margin: EdgeInsets.only(
-            left: defaultMargin + 30,
-            right: defaultMargin + 30,
-            bottom: 13,
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
-            children: const [
+            // ignore: prefer_const_literals_to_create_immutables
+            children: [
               NavigationItem(
                 icon: 'icon_home.png',
                 index: 0,
@@ -72,7 +67,6 @@ class MainPage extends StatelessWidget {
               NavigationItem(
                 icon: 'icon_profile_nav.png',
                 index: 3,
-                width: 17.5,
               ),
             ],
           ),

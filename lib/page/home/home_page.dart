@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hafoo/page/custom_scroll.dart';
 import 'package:hafoo/theme.dart';
 import 'package:hafoo/widget/kategori_item.dart';
+import 'package:hafoo/widget/populer_tile.dart';
 import 'package:hafoo/widget/rekomendasi_card.dart';
 
 class HomePage extends StatelessWidget {
@@ -220,29 +221,18 @@ class HomePage extends StatelessWidget {
             SizedBox(
               height: 14,
             ),
-            Container(
-              width: double.infinity,
-              height: 100,
-              margin: EdgeInsets.only(bottom: 16),
-              decoration: BoxDecoration(
-                color: kWhiteColor,
-                borderRadius: BorderRadius.circular(10),
-                boxShadow: [
-                  BoxShadow(
-                    offset: Offset(0, 1),
-                    blurRadius: 4,
-                    color: Color(0xffE0E0E0).withOpacity(0.9),
-                  ),
-                ],
-              ),
-            ),
+            PopulerTile(),
+            PopulerTile(),
+            SizedBox(
+              height: 60,
+            )
           ],
         ),
       );
     }
 
     return Scaffold(
-      backgroundColor: kWhiteColor,
+      backgroundColor: Color(0xffFCFCFC),
       body: SafeArea(
         child: ScrollConfiguration(
           behavior: MyBehavior(),

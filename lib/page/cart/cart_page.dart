@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:hafoo/bloc/page/page_cubit.dart';
 import 'package:hafoo/theme.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CartPage extends StatelessWidget {
   const CartPage({Key? key}) : super(key: key);
@@ -24,7 +26,7 @@ class CartPage extends StatelessWidget {
 
     Widget emptyCart() {
       return Expanded(
-        child: Container(
+        child: SizedBox(
           width: double.infinity,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -47,10 +49,12 @@ class CartPage extends StatelessWidget {
                 style: subtitleTextStyle,
               ),
               SizedBox(height: 20),
-              Container(
+              SizedBox(
                 height: 44,
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    context.read<PageCubit>().setPage(0);
+                  },
                   style: TextButton.styleFrom(
                     backgroundColor: kYellowColor1,
                     shape: RoundedRectangleBorder(

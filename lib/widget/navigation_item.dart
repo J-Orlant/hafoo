@@ -10,7 +10,7 @@ class NavigationItem extends StatelessWidget {
   const NavigationItem({
     required this.icon,
     required this.index,
-    this.width = 22,
+    this.width = 30,
     Key? key,
   }) : super(key: key);
 
@@ -21,13 +21,28 @@ class NavigationItem extends StatelessWidget {
       onTap: () {
         context.read<PageCubit>().setPage(index);
       },
-      child: SizedBox(
+      child: Container(
         height: 68.5,
-        child: Image.asset(
-          'assets/$icon',
-          width: width,
-          // TODO: BUG COLOR
-          color: (state == index) ? kYellowColor1 : kBlackColor,
+        padding: EdgeInsets.only(top: 19),
+        child: Column(
+          children: [
+            Image.asset(
+              'assets/$icon',
+              width: width,
+              color: (state == index) ? kYellowColor1 : kGreyColor,
+            ),
+            SizedBox(
+              height: 6,
+            ),
+            Container(
+              width: 25,
+              height: 4,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(5),
+                color: (state == index) ? kYellowColor1 : Colors.transparent,
+              ),
+            ),
+          ],
         ),
       ),
     );
