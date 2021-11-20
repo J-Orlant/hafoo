@@ -76,16 +76,30 @@ class CartPage extends StatelessWidget {
       );
     }
 
-    // TODO: Content
+    // TODO: Lu buat cart nya disini bre
     Widget content() {
-      return Container();
+      return Expanded(
+        child: ListView(
+          padding: EdgeInsets.symmetric(
+            horizontal: 12,
+            vertical: 28,
+          ),
+          children: [
+            Text('hello'),
+          ],
+        ),
+      );
     }
 
-    return Column(
-      children: [
-        header(),
-        emptyCart(),
-      ],
+    return Scaffold(
+      backgroundColor: kWhiteColor,
+      body: Column(
+        children: [
+          header(),
+          content(),
+          // emptyCart(),
+        ],
+      ),
     );
   }
 }

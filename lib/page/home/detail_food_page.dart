@@ -82,196 +82,225 @@ class _DetailFoodPageState extends State<DetailFoodPage> {
 
     Widget content() {
       Widget namaHarga() {
-        return Row(
-          children: [
-            Expanded(
-              child: Text(
-                'Risoles',
-                style: blackTextStyle.copyWith(
-                  fontWeight: semiBold,
-                  fontSize: 24,
+        return Container(
+          margin: EdgeInsets.only(
+            left: defaultMargin,
+            right: defaultMargin,
+          ),
+          child: Row(
+            children: [
+              Expanded(
+                child: Text(
+                  'Risoles',
+                  style: blackTextStyle.copyWith(
+                    fontWeight: semiBold,
+                    fontSize: 24,
+                  ),
                 ),
               ),
-            ),
-            Text(
-              'Rp. 10.000',
-              style: yellowTextStyle.copyWith(
-                fontWeight: semiBold,
-                fontSize: 18,
+              Text(
+                'Rp. 10.000',
+                style: yellowTextStyle.copyWith(
+                  fontWeight: semiBold,
+                  fontSize: 18,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         );
       }
 
       Widget type() {
-        return Row(
-          children: [
-            DetailFoodType(
-              image: 'icon_star.png',
-              text: '4.5',
-              color: kYellowColor1.withOpacity(0.2),
-            ),
-            DetailFoodType(
-              image: 'icon_fire.png',
-              text: 'Kal',
-              color: kRedColor,
-            ),
-            DetailFoodType(
-              image: '',
-              text: 'Ringan',
-              color: kGreenColor,
-            ),
-          ],
+        return Container(
+          margin: EdgeInsets.only(
+            left: defaultMargin,
+            right: defaultMargin,
+          ),
+          child: Row(
+            children: [
+              DetailFoodType(
+                image: 'icon_star.png',
+                text: '4.5',
+                color: kYellowColor1.withOpacity(0.2),
+              ),
+              DetailFoodType(
+                image: 'icon_fire.png',
+                text: 'Kal',
+                color: kRedColor,
+              ),
+              DetailFoodType(
+                image: '',
+                text: 'Ringan',
+                color: kGreenColor,
+              ),
+            ],
+          ),
         );
       }
 
       Widget detail() {
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Detail',
-              style: blackTextStyle.copyWith(
-                fontWeight: semiBold,
-                fontSize: 18,
+        return Container(
+          margin: EdgeInsets.only(
+            left: defaultMargin,
+            right: defaultMargin,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Detail',
+                style: blackTextStyle.copyWith(
+                  fontWeight: semiBold,
+                  fontSize: 18,
+                ),
               ),
-            ),
-            SizedBox(
-              height: 12,
-            ),
-            Text(
-              'Risoles, atau hanya risol saja, adalah pastri berisi daging, biasanya daging cincang, dan sayuran yang dibungkus dadar, dan digoreng setelah dilapisi tepung panir dan kocokan telur ayam. ',
-              style: blackTextStyle.copyWith(
-                color: Color(0xff838383),
+              SizedBox(
+                height: 12,
               ),
-              textAlign: TextAlign.justify,
-            ),
-          ],
+              Text(
+                'Risoles, atau hanya risol saja, adalah pastri berisi daging, biasanya daging cincang, dan sayuran yang dibungkus dadar, dan digoreng setelah dilapisi tepung panir dan kocokan telur ayam. ',
+                style: blackTextStyle.copyWith(
+                  color: Color(0xff838383),
+                ),
+                textAlign: TextAlign.justify,
+              ),
+            ],
+          ),
         );
       }
 
       Widget jumlah() {
-        return Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            InkWell(
-              onTap: () {
-                setState(() {
-                  if (jumlahMakanan > 1) {
-                    jumlahMakanan--;
-                  }
-                });
-              },
-              child: Container(
-                width: 28,
-                height: 28,
-                decoration: BoxDecoration(
-                  color: kYellowColor1,
-                  shape: BoxShape.circle,
+        return Container(
+          margin: EdgeInsets.only(
+            left: defaultMargin,
+            right: defaultMargin,
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              InkWell(
+                onTap: () {
+                  setState(() {
+                    if (jumlahMakanan > 1) {
+                      jumlahMakanan--;
+                    }
+                  });
+                },
+                child: Container(
+                  width: 28,
+                  height: 28,
+                  decoration: BoxDecoration(
+                    color: kYellowColor1,
+                    shape: BoxShape.circle,
+                  ),
+                  child: Center(
+                    child: Icon(
+                      Icons.remove,
+                      color: kWhiteColor,
+                    ),
+                  ),
                 ),
+              ),
+              SizedBox(
+                width: 56,
                 child: Center(
-                  child: Icon(
-                    Icons.remove,
-                    color: kWhiteColor,
+                  child: Text(
+                    jumlahMakanan.toString(),
+                    style: blackTextStyle.copyWith(
+                      fontSize: 18,
+                      fontWeight: medium,
+                    ),
                   ),
                 ),
               ),
-            ),
-            SizedBox(
-              width: 56,
-              child: Center(
-                child: Text(
-                  jumlahMakanan.toString(),
-                  style: blackTextStyle.copyWith(
-                    fontSize: 18,
-                    fontWeight: medium,
+              InkWell(
+                onTap: () {
+                  setState(() {
+                    jumlahMakanan++;
+                  });
+                },
+                child: Container(
+                  width: 28,
+                  height: 28,
+                  decoration: BoxDecoration(
+                    color: kYellowColor1,
+                    shape: BoxShape.circle,
+                  ),
+                  child: Center(
+                    child: Icon(
+                      Icons.add,
+                      color: kWhiteColor,
+                    ),
                   ),
                 ),
               ),
-            ),
-            InkWell(
-              onTap: () {
-                setState(() {
-                  jumlahMakanan++;
-                });
-              },
-              child: Container(
-                width: 28,
-                height: 28,
-                decoration: BoxDecoration(
-                  color: kYellowColor1,
-                  shape: BoxShape.circle,
-                ),
-                child: Center(
-                  child: Icon(
-                    Icons.add,
-                    color: kWhiteColor,
-                  ),
-                ),
-              ),
-            ),
-          ],
+            ],
+          ),
         );
       }
 
       Widget menuLain() {
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Detail',
-              style: blackTextStyle.copyWith(
-                fontWeight: semiBold,
-                fontSize: 18,
+        return Container(
+          margin: EdgeInsets.only(
+            left: defaultMargin,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Detail',
+                style: blackTextStyle.copyWith(
+                  fontWeight: semiBold,
+                  fontSize: 18,
+                ),
               ),
-            ),
-            Container(
-              height: 75,
-              margin: EdgeInsets.only(top: 20),
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: [
-                  Container(
-                    width: 97,
-                    height: 73,
-                    margin: EdgeInsets.only(right: 24),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      image: DecorationImage(
-                        image: AssetImage('assets/image_risoles.png'),
-                        fit: BoxFit.cover,
+              Container(
+                height: 75,
+                margin: EdgeInsets.only(top: 20),
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: [
+                    Container(
+                      width: 97,
+                      height: 73,
+                      margin: EdgeInsets.only(right: 24),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        image: DecorationImage(
+                          image: AssetImage('assets/image_risoles.png'),
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
-                  ),
-                  Container(
-                    width: 97,
-                    height: 73,
-                    margin: EdgeInsets.only(right: 24),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      image: DecorationImage(
-                        image: AssetImage('assets/image_risoles.png'),
-                        fit: BoxFit.cover,
+                    Container(
+                      width: 97,
+                      height: 73,
+                      margin: EdgeInsets.only(right: 24),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        image: DecorationImage(
+                          image: AssetImage('assets/image_risoles.png'),
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
-                  ),
-                  Container(
-                    width: 97,
-                    height: 73,
-                    margin: EdgeInsets.only(right: 24),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      image: DecorationImage(
-                        image: AssetImage('assets/image_risoles.png'),
-                        fit: BoxFit.cover,
+                    Container(
+                      width: 97,
+                      height: 73,
+                      margin: EdgeInsets.only(right: 24),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        image: DecorationImage(
+                          image: AssetImage('assets/image_risoles.png'),
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         );
       }
 
@@ -279,8 +308,6 @@ class _DetailFoodPageState extends State<DetailFoodPage> {
         width: double.infinity,
         padding: EdgeInsets.only(
           top: 38,
-          left: defaultMargin,
-          right: defaultMargin,
         ),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.vertical(
