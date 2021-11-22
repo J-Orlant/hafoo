@@ -117,7 +117,7 @@ class BottomNavigationCart extends StatelessWidget {
                 ),
                 Expanded(
                   child: Text(
-                    'Rp. 100.000',
+                    'Rp. 80.000',
                     style: blackTextStyle.copyWith(
                       fontSize: 16,
                       fontWeight: bold,

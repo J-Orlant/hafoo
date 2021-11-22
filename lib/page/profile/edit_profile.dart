@@ -146,7 +146,9 @@ class EditProfilePage extends StatelessWidget {
               Icons.check,
               color: Color(0xffED6B63),
             ),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pop(context);
+            },
           ),
         ],
       ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hafoo/bloc/page/page_cubit.dart';
 import 'package:hafoo/theme.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hafoo/widget/cart_card.dart';
 
 class CartPage extends StatelessWidget {
   const CartPage({Key? key}) : super(key: key);
@@ -85,7 +86,8 @@ class CartPage extends StatelessWidget {
             vertical: 28,
           ),
           children: [
-            Text('hello'),
+            CartCard(),
+            CartCard(),
           ],
         ),
       );

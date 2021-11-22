@@ -223,7 +223,7 @@ class DetailPembayaranPage extends StatelessWidget {
                   style: blackTextStyle,
                 ),
                 Text(
-                  'Rp. 90.000',
+                  'Rp. 80.000',
                   style: blackTextStyle,
                 ),
               ],
@@ -266,7 +266,7 @@ class DetailPembayaranPage extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  'Rp. 100.000',
+                  'Rp. 90.000',
                   style: blackTextStyle.copyWith(
                     fontWeight: semiBold,
                   ),
@@ -362,7 +362,7 @@ class DetailPembayaranCard extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
                   image: DecorationImage(
-                    image: AssetImage('assets/image_risoles.png'),
+                    image: AssetImage('assets/image_dimsum.png'),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -384,7 +384,7 @@ class DetailPembayaranCard extends StatelessWidget {
                       height: 4,
                     ),
                     Text(
-                      'Rp. 40.000',
+                      'Rp. 80.000',
                       style: blackTextStyle.copyWith(
                         fontSize: 16,
                         fontWeight: semiBold,

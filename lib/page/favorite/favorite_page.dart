@@ -36,7 +36,7 @@ class FavoritePage extends StatelessWidget {
               ),
               SizedBox(height: 23),
               Text(
-                "Belum mempunyai makanan favorite?",
+                "Belum mempunyai makanan favorit?",
                 style: blackTextStyle.copyWith(
                   fontSize: 16,
                   fontWeight: medium,
