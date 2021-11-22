@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hafoo/page/cart/pembayaran_page.dart';
 import 'package:hafoo/theme.dart';
 
 class DetailPembayaranPage extends StatelessWidget {
@@ -287,12 +288,12 @@ class DetailPembayaranPage extends StatelessWidget {
         ),
         child: TextButton(
           onPressed: () {
-            // Navigator.push(
-            //   context,
-            //   MaterialPageRoute(
-            //     builder: (context) => DetailPembayaranPage(),
-            //   ),
-            // );
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => PembayaranPage(),
+              ),
+            );
           },
           style: TextButton.styleFrom(
             shape: RoundedRectangleBorder(

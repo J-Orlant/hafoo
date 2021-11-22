@@ -51,6 +51,7 @@ class ProfilePage extends StatelessWidget {
                   },
                   child: Image.asset(
                     "assets/icon_exit.png",
+                    color: kWhiteColor,
                     width: 20,
                   ),
                 ),
