@@ -70,7 +70,7 @@ class KategoriFoodPage extends StatelessWidget {
           crossAxisCount: 2,
           crossAxisSpacing: 10,
           mainAxisSpacing: 20,
-          children: [
+          children: const [
             KategoriCard(
               nama: 'Risoles',
               harga: 'Rp. 20.000',

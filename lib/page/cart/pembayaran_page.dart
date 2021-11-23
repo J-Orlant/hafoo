@@ -8,6 +8,7 @@ class PembayaranPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Pembayaran pembayaran = Provider.of(context);
     Widget appbar() {
       return SafeArea(
         child: Container(
@@ -200,12 +201,9 @@ class PembayaranPage extends StatelessWidget {
         ),
         child: TextButton(
           onPressed: () {
-            // Navigator.push(
-            //   context,
-            //   MaterialPageRoute(
-            //     builder: (context) => PembayaranPage(),
-            //   ),
-            // );
+            Navigator.pushNamedAndRemoveUntil(
+                context, '/success', (route) => false);
+            pembayaran.changeIndex = 0;
           },
           style: TextButton.styleFrom(
             shape: RoundedRectangleBorder(
@@ -288,6 +286,7 @@ class MetodeItem extends StatelessWidget {
           ),
           Spacer(),
           Radio(
+            activeColor: kYellowColor1,
             value: index,
             groupValue: pembayaran.currentIndex,
             onChanged: (value) {

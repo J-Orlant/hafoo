@@ -7,7 +7,6 @@ import 'package:hafoo/page/favorite/favorite_page.dart';
 import 'package:hafoo/page/home/home_page.dart';
 import 'package:hafoo/page/profile/profile.dart';
 import 'package:hafoo/theme.dart';
-import 'package:hafoo/widget/custom_button.dart';
 import 'package:hafoo/widget/navigation_item.dart';
 
 class MainPage extends StatelessWidget {

@@ -77,7 +77,6 @@ class CartPage extends StatelessWidget {
       );
     }
 
-    // TODO: Lu buat cart nya disini bre
     Widget content() {
       return Expanded(
         child: ListView(
@@ -85,7 +84,7 @@ class CartPage extends StatelessWidget {
             horizontal: 12,
             vertical: 28,
           ),
-          children: [
+          children: const [
             CartCard(),
             CartCard(),
           ],

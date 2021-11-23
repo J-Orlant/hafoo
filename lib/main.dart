@@ -3,8 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hafoo/bloc/page/page_cubit.dart';
 import 'package:hafoo/page/auth/login_page.dart';
 import 'package:hafoo/page/auth/register_page.dart';
+import 'package:hafoo/page/cart/succes_page.dart';
 import 'package:hafoo/page/main_page.dart';
 import 'package:hafoo/page/profile/edit_profile.dart';
+import 'package:hafoo/page/profile/orderan_page.dart';
 import 'package:hafoo/page/splash_screen.dart';
 import 'package:hafoo/page/welcome_page.dart';
 import 'package:hafoo/provider/pembayaran.dart';
@@ -41,6 +43,8 @@ class MyApp extends StatelessWidget {
             ('/login'): (context) => LoginPage(),
             ('/main-page'): (context) => MainPage(),
             ('/edit-profile'): (context) => EditProfilePage(),
+            ('/orderan'): (context) => OrderanPage(),
+            ('/success'): (context) => SuccessPage(),
           },
         ),
       ),

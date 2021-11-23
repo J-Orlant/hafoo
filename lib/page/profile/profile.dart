@@ -107,7 +107,12 @@ class ProfilePage extends StatelessWidget {
                 },
                 child: menuItem("Ubah Profile"),
               ),
-              menuItem("Orderan"),
+              GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, '/orderan');
+                },
+                child: menuItem("Orderanmu"),
+              ),
               menuItem("Bantuan"),
               SizedBox(height: 30),
               Text(

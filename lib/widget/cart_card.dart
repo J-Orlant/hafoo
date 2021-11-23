@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:hafoo/theme.dart';
 
 class CartCard extends StatefulWidget {
-  // CartCard({});
+  const CartCard({
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<CartCard> createState() => _CartCardState();
@@ -97,7 +99,13 @@ class _CartCardState extends State<CartCard> {
                         width: 20,
                       ),
                     )
-                  : SizedBox(),
+                  : Opacity(
+                      opacity: 0.5,
+                      child: Image.asset(
+                        'assets/icon_min.png',
+                        width: 20,
+                      ),
+                    ),
             ],
           ),
         ],
