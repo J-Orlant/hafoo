@@ -87,7 +87,7 @@ class _CartCardState extends State<CartCard> {
                 ),
               ),
               SizedBox(height: 7),
-              jumlah != 0
+              jumlah != 1
                   ? GestureDetector(
                       onTap: () {
                         setState(() => jumlah--);
