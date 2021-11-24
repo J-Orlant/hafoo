@@ -12,7 +12,7 @@ class CartPage extends StatefulWidget {
 }
 
 class _CartPageState extends State<CartPage> {
-  final items = List<String>.generate(2, (i) => "Ryujin");
+  final items = List<String>.generate(2, (i) => "Ryujin Punyaku \u2665");
   int jumlah = 2;
 
   @override
@@ -96,13 +96,12 @@ class _CartPageState extends State<CartPage> {
               vertical: 28,
             ),
             itemBuilder: (context, index) {
-              final item = items[index];
               return Dismissible(
-                key: Key(item),
+                key: UniqueKey(),
                 direction: DismissDirection.endToStart,
                 background: Container(
-                  margin: const EdgeInsets.only(top: 20),
-                  padding: EdgeInsets.only(right: 15),
+                  margin: const EdgeInsets.all(15.0),
+                  padding: EdgeInsets.only(right: 10),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
                     color: kYellowColor1,
@@ -117,7 +116,7 @@ class _CartPageState extends State<CartPage> {
                   child: Icon(Icons.delete, color: Colors.white),
                 ),
                 onDismissed: (direction) {
-                  // Remove the item from the data source.
+                  print(items);
                   setState(() {
                     items.removeAt(index);
                   });
@@ -137,8 +136,6 @@ class _CartPageState extends State<CartPage> {
         ),
       );
     }
-
-    
 
     return Scaffold(
       backgroundColor: kWhiteColor,
