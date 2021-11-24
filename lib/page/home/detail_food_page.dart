@@ -10,6 +10,7 @@ class DetailFoodPage extends StatefulWidget {
 
 class _DetailFoodPageState extends State<DetailFoodPage> {
   int jumlahMakanan = 1;
+  bool like = false;
   @override
   Widget build(BuildContext context) {
     // NOTE: Gambar Makanan
@@ -60,17 +61,40 @@ class _DetailFoodPageState extends State<DetailFoodPage> {
                   ),
                 ),
               ),
-              Container(
-                width: 39,
-                height: 39,
-                decoration: BoxDecoration(
-                  color: kWhiteColor,
-                  shape: BoxShape.circle,
-                ),
-                child: Center(
-                  child: Image.asset(
-                    'assets/icon_love.png',
-                    width: 23,
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    like = !like;
+                  });
+                  if (like == false) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        backgroundColor: Colors.red,
+                        content: Text('Makanan berhasil dihapus'),
+                      ),
+                    );
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        backgroundColor: Colors.blueAccent,
+                        content: Text('Makanan berhasil disimpan'),
+                      ),
+                    );
+                  }
+                },
+                child: Container(
+                  width: 39,
+                  height: 39,
+                  decoration: BoxDecoration(
+                    color: kWhiteColor,
+                    shape: BoxShape.circle,
+                  ),
+                  child: Center(
+                    child: Image.asset(
+                      'assets/icon_love.png',
+                      width: 23,
+                      color: (like) ? kYellowColor1 : kGreyColor,
+                    ),
                   ),
                 ),
               ),

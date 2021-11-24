@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hafoo/bloc/page/page_cubit.dart';
 import 'package:hafoo/theme.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lottie/lottie.dart';
 
 class SuccessPage extends StatelessWidget {
   const SuccessPage({Key? key}) : super(key: key);
@@ -13,6 +14,15 @@ class SuccessPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            SizedBox(
+              width: 240,
+              height: 240,
+              child: Center(
+                child: LottieBuilder.asset(
+                  'assets/succes_animation.json',
+                ),
+              ),
+            ),
             SizedBox(
               height: 48,
             ),

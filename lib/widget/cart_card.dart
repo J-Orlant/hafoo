@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:hafoo/theme.dart';
 
 class CartCard extends StatefulWidget {
+  final bool isDismiss;
   const CartCard({
     Key? key,
+    this.isDismiss = false,
   }) : super(key: key);
 
   @override
@@ -15,7 +17,7 @@ class _CartCardState extends State<CartCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 20),
+      margin: EdgeInsets.only(bottom: 20),
       padding: EdgeInsets.only(
         top: 26,
         bottom: 22,
@@ -23,7 +25,7 @@ class _CartCardState extends State<CartCard> {
         right: 24,
       ),
       decoration: BoxDecoration(
-        color: kWhiteColor,
+        color: (widget.isDismiss) ? kYellowColor1 : kWhiteColor,
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(

@@ -14,7 +14,7 @@ class CartPage extends StatefulWidget {
 class _CartPageState extends State<CartPage> {
   final items = List<String>.generate(2, (i) => "Ryujin Punyaku \u2665");
   int jumlah = 2;
-
+  bool isDismiss = false;
   @override
   Widget build(BuildContext context) {
     Widget header() {
@@ -87,52 +87,91 @@ class _CartPageState extends State<CartPage> {
 
     Widget content() {
       return Expanded(
-        child: GestureDetector(
-          onTap: () {},
-          child: ListView.builder(
-            itemCount: items.length,
-            padding: EdgeInsets.symmetric(
-              horizontal: 12,
-              vertical: 28,
-            ),
-            itemBuilder: (context, index) {
-              return Dismissible(
-                key: UniqueKey(),
-                direction: DismissDirection.endToStart,
-                background: Container(
-                  margin: const EdgeInsets.all(15.0),
-                  padding: EdgeInsets.only(right: 10),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: kYellowColor1,
-                    boxShadow: [
-                      BoxShadow(
-                        color: kBlackColor.withOpacity(0.25),
-                        blurRadius: 5,
-                      ),
-                    ],
-                  ),
-                  alignment: Alignment.centerRight,
-                  child: Icon(Icons.delete, color: Colors.white),
-                ),
-                onDismissed: (direction) {
-                  print(items);
-                  setState(() {
-                    items.removeAt(index);
-                  });
-
-                  // Then show a snackbar.
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      backgroundColor: Colors.red,
-                      content: Text('Pesanan berhasil di hapus !'),
-                    ),
-                  );
-                },
-                child: CartCard(),
-              );
-            },
+        child: ListView.builder(
+          itemCount: items.length,
+          padding: EdgeInsets.symmetric(
+            horizontal: 12,
+            vertical: 28,
           ),
+          itemBuilder: (context, index) {
+            return Dismissible(
+              key: UniqueKey(),
+              direction: DismissDirection.endToStart,
+              background: Container(
+                margin: EdgeInsets.only(
+                  bottom: 20,
+                ),
+                padding: EdgeInsets.only(
+                  top: 26,
+                  bottom: 22,
+                  left: 9,
+                  right: 10,
+                ),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: kYellowColor1,
+                  boxShadow: [
+                    BoxShadow(
+                      color: kBlackColor.withOpacity(0.25),
+                      blurRadius: 5,
+                    ),
+                  ],
+                ),
+                alignment: Alignment.centerRight,
+                child: Image.asset(
+                  'assets/icon_trash.png',
+                  width: 20,
+                  color: kWhiteColor,
+                ),
+              ),
+              dismissThresholds: const {
+                DismissDirection.startToEnd: 0.1,
+                DismissDirection.endToStart: 0.7
+              },
+              // confirmDismiss: (direction) async {
+              //   return await showDialog(
+              //     context: context,
+              //     builder: (context) {
+              //       return AlertDialog(
+              //         title: const Text('Konfirmasi'),
+              //         content: const Text('Yakin ingin menghapus pesanan ?'),
+              //         actions: [
+              //           FlatButton(
+              //             onPressed: () {
+              //               Navigator.of(context).pop(true);
+              //             },
+              //             child: const Text('Delete'),
+              //           ),
+              //           FlatButton(
+              //             onPressed: () {
+              //               Navigator.of(context).pop(false);
+              //             },
+              //             child: const Text('Cancel'),
+              //           ),
+              //         ],
+              //       );
+              //     },
+              //   );
+              // },
+              onDismissed: (direction) {
+                print(items);
+                setState(() {
+                  items.removeAt(index);
+                });
+
+                // Then show a snackbar.
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    backgroundColor: Colors.red,
+                    content: Text('Pesanan berhasil di hapus !'),
+                  ),
+                );
+              },
+              child: CartCard(
+                isDismiss: isDismiss,
+              ),
+            );
+          },
         ),
       );
     }
