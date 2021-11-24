@@ -4,8 +4,16 @@ import 'package:hafoo/theme.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hafoo/widget/cart_card.dart';
 
-class CartPage extends StatelessWidget {
+class CartPage extends StatefulWidget {
   const CartPage({Key? key}) : super(key: key);
+
+  @override
+  State<CartPage> createState() => _CartPageState();
+}
+
+class _CartPageState extends State<CartPage> {
+  final items = List<String>.generate(2, (i) => "Ryujin");
+  int jumlah = 2;
 
   @override
   Widget build(BuildContext context) {
@@ -79,18 +87,58 @@ class CartPage extends StatelessWidget {
 
     Widget content() {
       return Expanded(
-        child: ListView(
-          padding: EdgeInsets.symmetric(
-            horizontal: 12,
-            vertical: 28,
+        child: GestureDetector(
+          onTap: () {},
+          child: ListView.builder(
+            itemCount: items.length,
+            padding: EdgeInsets.symmetric(
+              horizontal: 12,
+              vertical: 28,
+            ),
+            itemBuilder: (context, index) {
+              final item = items[index];
+              return Dismissible(
+                key: Key(item),
+                direction: DismissDirection.endToStart,
+                background: Container(
+                  margin: const EdgeInsets.only(top: 20),
+                  padding: EdgeInsets.only(right: 15),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: kYellowColor1,
+                    boxShadow: [
+                      BoxShadow(
+                        color: kBlackColor.withOpacity(0.25),
+                        blurRadius: 5,
+                      ),
+                    ],
+                  ),
+                  alignment: Alignment.centerRight,
+                  child: Icon(Icons.delete, color: Colors.white),
+                ),
+                onDismissed: (direction) {
+                  // Remove the item from the data source.
+                  setState(() {
+                    items.removeAt(index);
+                  });
+
+                  // Then show a snackbar.
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      backgroundColor: Colors.red,
+                      content: Text('Pesanan berhasil di hapus !'),
+                    ),
+                  );
+                },
+                child: CartCard(),
+              );
+            },
           ),
-          children: const [
-            CartCard(),
-            CartCard(),
-          ],
         ),
       );
     }
+
+    
 
     return Scaffold(
       backgroundColor: kWhiteColor,

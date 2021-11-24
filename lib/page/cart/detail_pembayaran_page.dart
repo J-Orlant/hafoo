@@ -224,7 +224,7 @@ class DetailPembayaranPage extends StatelessWidget {
                   style: blackTextStyle,
                 ),
                 Text(
-                  'Rp. 80.000',
+                  'Rp. 20.000',
                   style: blackTextStyle,
                 ),
               ],
@@ -385,7 +385,7 @@ class DetailPembayaranCard extends StatelessWidget {
                       height: 4,
                     ),
                     Text(
-                      'Rp. 80.000',
+                      'Rp. 20.000',
                       style: blackTextStyle.copyWith(
                         fontSize: 16,
                         fontWeight: semiBold,
@@ -398,7 +398,7 @@ class DetailPembayaranCard extends StatelessWidget {
                 width: 43,
               ),
               Text(
-                '2x',
+                '4x',
                 style: blackTextStyle.copyWith(
                   fontSize: 18,
                   fontWeight: semiBold,
