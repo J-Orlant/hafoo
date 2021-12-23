@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:hafoo/bloc/page/page_cubit.dart';
+import 'package:hafoo/models/user_model.dart';
+import 'package:hafoo/provider/auth_provider.dart';
 import 'package:hafoo/theme.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    AuthProvider authProvider = Provider.of<AuthProvider>(context);
+
+    UserModel user = authProvider.user;
     Widget header() {
       return AppBar(
         backgroundColor: kYellowColor1,
@@ -28,7 +36,7 @@ class ProfilePage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Hallo, Rimuru",
+                        "Hallo, ${user.name}",
                         style: whiteTextStyle.copyWith(
                           fontSize: 24,
                           fontWeight: semiBold,
@@ -36,7 +44,7 @@ class ProfilePage extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                       ),
                       Text(
-                        "@rimurutempest",
+                        "@${user.username}",
                         style: subtitleTextStyle.copyWith(
                           fontSize: 16,
                         ),
@@ -48,6 +56,7 @@ class ProfilePage extends StatelessWidget {
                   onTap: () {
                     Navigator.pushNamedAndRemoveUntil(
                         context, '/login', (route) => false);
+                    context.read<PageCubit>().setPage(0);
                   },
                   child: Image.asset(
                     "assets/icon_exit.png",

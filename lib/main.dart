@@ -9,10 +9,12 @@ import 'package:hafoo/page/profile/edit_profile.dart';
 import 'package:hafoo/page/profile/orderan_page.dart';
 import 'package:hafoo/page/splash_screen.dart';
 import 'package:hafoo/page/welcome_page.dart';
+import 'package:hafoo/provider/auth_provider.dart';
 import 'package:hafoo/provider/pembayaran.dart';
+import 'package:hafoo/provider/product_provider.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+void main() async {
   runApp(MyApp());
 }
 
@@ -32,6 +34,12 @@ class MyApp extends StatelessWidget {
         providers: [
           ChangeNotifierProvider<Pembayaran>(
             create: (context) => Pembayaran(),
+          ),
+          ChangeNotifierProvider<AuthProvider>(
+            create: (context) => AuthProvider(),
+          ),
+          ChangeNotifierProvider<ProductProvider>(
+            create: (context) => ProductProvider(),
           ),
         ],
         child: MaterialApp(

@@ -1,15 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:hafoo/models/user_model.dart';
 import 'package:hafoo/page/custom_scroll.dart';
+import 'package:hafoo/provider/auth_provider.dart';
 import 'package:hafoo/theme.dart';
 import 'package:hafoo/widget/kategori_item.dart';
 import 'package:hafoo/widget/populer_tile.dart';
 import 'package:hafoo/widget/rekomendasi_card.dart';
+import 'package:provider/provider.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+// TODO: Get Product
+class HomePage extends StatefulWidget {
+  final String token;
+  const HomePage({
+    required this.token,
+    Key? key,
+  }) : super(key: key);
 
   @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
   Widget build(BuildContext context) {
+    AuthProvider authProvider = Provider.of<AuthProvider>(context);
+
+    UserModel user = authProvider.user;
+
     Widget header() {
       return Container(
         margin: EdgeInsets.only(
@@ -22,7 +39,7 @@ class HomePage extends StatelessWidget {
           children: [
             Expanded(
               child: Text(
-                'Hallo Rimuru\nSelamat Malam',
+                'Hallo ${user.username}\nSelamat Malam',
                 style: blackTextStyle.copyWith(
                   fontWeight: semiBold,
                   fontSize: 18,
@@ -102,6 +119,9 @@ class HomePage extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            // Text(
+            //   widget.token,
+            // ),
             Text(
               'Kategori',
               style: blackTextStyle.copyWith(fontWeight: medium),

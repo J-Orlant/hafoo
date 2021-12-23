@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:hafoo/models/user_model.dart';
+import 'package:hafoo/provider/auth_provider.dart';
+import 'package:provider/provider.dart';
 
 import '../../theme.dart';
 
@@ -7,6 +10,9 @@ class EditProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AuthProvider authProvider = Provider.of<AuthProvider>(context);
+
+    UserModel user = authProvider.user;
     Widget inputNama() {
       return Container(
         margin: EdgeInsets.only(top: 30),
@@ -22,7 +28,7 @@ class EditProfilePage extends StatelessWidget {
             TextFormField(
               style: secondaryTextStyle,
               decoration: InputDecoration(
-                hintText: 'Rimuru Tempest',
+                hintText: user.name,
                 hintStyle: secondaryTextStyle,
                 enabledBorder: UnderlineInputBorder(
                   borderSide: BorderSide(
@@ -51,7 +57,7 @@ class EditProfilePage extends StatelessWidget {
             TextFormField(
               style: secondaryTextStyle,
               decoration: InputDecoration(
-                hintText: '@rimurutempest',
+                hintText: '@${user.username}',
                 hintStyle: secondaryTextStyle,
                 enabledBorder: UnderlineInputBorder(
                   borderSide: BorderSide(
@@ -80,7 +86,7 @@ class EditProfilePage extends StatelessWidget {
             TextFormField(
               style: secondaryTextStyle,
               decoration: InputDecoration(
-                hintText: 'rimuru@mail.ru',
+                hintText: user.email,
                 hintStyle: secondaryTextStyle,
                 enabledBorder: UnderlineInputBorder(
                   borderSide: BorderSide(

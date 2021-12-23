@@ -1,12 +1,50 @@
 import 'package:flutter/material.dart';
+import 'package:hafoo/provider/auth_provider.dart';
 import 'package:hafoo/theme.dart';
 import 'package:hafoo/widget/custom_button.dart';
+import 'package:hafoo/widget/loading_button.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
   @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  TextEditingController emailController = TextEditingController(text: '');
+  TextEditingController passwordController = TextEditingController(text: '');
+
+  bool isLoading = false;
+  @override
   Widget build(BuildContext context) {
+    var handleLogin = () async {
+      setState(() {
+        isLoading = true;
+      });
+
+      if (await AuthProvider().login(
+        email: emailController.text,
+        password: passwordController.text,
+      )) {
+        Navigator.pushNamed(context, '/main-page');
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            duration: Duration(seconds: 1),
+            backgroundColor: Colors.red,
+            content: Text(
+              'Gagal Login',
+              textAlign: TextAlign.center,
+            ),
+          ),
+        );
+      }
+      setState(() {
+        isLoading = false;
+      });
+    };
+
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
 
@@ -30,6 +68,7 @@ class LoginPage extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
           ),
           child: TextFormField(
+            controller: emailController,
             style: blackTextStyle.copyWith(
               fontWeight: medium,
             ),
@@ -65,6 +104,7 @@ class LoginPage extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
           ),
           child: TextFormField(
+            controller: passwordController,
             style: blackTextStyle.copyWith(
               fontWeight: medium,
             ),
@@ -109,9 +149,7 @@ class LoginPage extends StatelessWidget {
             ),
             CustomButton(
               text: 'Login',
-              onTap: () {
-                Navigator.pushNamed(context, '/main-page');
-              },
+              onTap: handleLogin,
             ),
           ],
         );
@@ -155,7 +193,7 @@ class LoginPage extends StatelessWidget {
             email(),
             password(),
             Spacer(),
-            button(),
+            (isLoading) ? LoadingButton() : button(),
           ],
         ),
       );

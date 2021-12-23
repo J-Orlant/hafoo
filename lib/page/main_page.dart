@@ -8,16 +8,42 @@ import 'package:hafoo/page/home/home_page.dart';
 import 'package:hafoo/page/profile/profile.dart';
 import 'package:hafoo/theme.dart';
 import 'package:hafoo/widget/navigation_item.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class MainPage extends StatelessWidget {
+class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
+
+  @override
+  State<MainPage> createState() => _MainPageState();
+}
+
+class _MainPageState extends State<MainPage> {
+  String _token = 'failed';
+
+  void getToken() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    setState(() {
+      _token = prefs.getString('token') ?? '';
+      print(_token);
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getToken();
+    print(_token);
+  }
 
   @override
   Widget build(BuildContext context) {
     Widget page(int currentIndex) {
       switch (currentIndex) {
         case 0:
-          return HomePage();
+          return HomePage(
+            token: _token,
+          );
         case 1:
           return FavoritePage();
         case 2:
@@ -25,7 +51,9 @@ class MainPage extends StatelessWidget {
         case 3:
           return ProfilePage();
         default:
-          return HomePage();
+          return HomePage(
+            token: _token,
+          );
       }
     }
 

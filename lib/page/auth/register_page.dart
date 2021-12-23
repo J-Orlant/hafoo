@@ -1,12 +1,58 @@
 import 'package:flutter/material.dart';
+import 'package:hafoo/provider/auth_provider.dart';
 import 'package:hafoo/theme.dart';
 import 'package:hafoo/widget/custom_button.dart';
+import 'package:hafoo/widget/loading_button.dart';
+import 'package:provider/provider.dart';
 
-class RegisterPage extends StatelessWidget {
+class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
 
   @override
+  State<RegisterPage> createState() => _RegisterPageState();
+}
+
+class _RegisterPageState extends State<RegisterPage> {
+  TextEditingController namaController = TextEditingController(text: '');
+  TextEditingController usernameController = TextEditingController(text: '');
+  TextEditingController emailController = TextEditingController(text: '');
+  TextEditingController passwordController = TextEditingController(text: '');
+
+  bool isLoading = false;
+
+  @override
   Widget build(BuildContext context) {
+    AuthProvider authProvider = Provider.of(context);
+
+    var handleSignUp = () async {
+      setState(() {
+        isLoading = true;
+      });
+
+      if (await authProvider.register(
+        name: namaController.text,
+        username: usernameController.text,
+        email: emailController.text,
+        password: passwordController.text,
+      )) {
+        Navigator.pushNamed(context, '/login');
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            duration: Duration(seconds: 1),
+            backgroundColor: Colors.red,
+            content: Text(
+              'Gagal Register',
+              textAlign: TextAlign.center,
+            ),
+          ),
+        );
+      }
+      setState(() {
+        isLoading = false;
+      });
+    };
+
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
 
@@ -42,6 +88,7 @@ class RegisterPage extends StatelessWidget {
                 fontWeight: medium,
               ),
             ),
+            controller: namaController,
           ),
         );
       }
@@ -77,6 +124,7 @@ class RegisterPage extends StatelessWidget {
                 fontWeight: medium,
               ),
             ),
+            controller: usernameController,
           ),
         );
       }
@@ -112,6 +160,7 @@ class RegisterPage extends StatelessWidget {
                 fontWeight: medium,
               ),
             ),
+            controller: emailController,
           ),
         );
       }
@@ -148,6 +197,7 @@ class RegisterPage extends StatelessWidget {
               ),
             ),
             obscureText: true,
+            controller: passwordController,
           ),
         );
       }
@@ -178,12 +228,12 @@ class RegisterPage extends StatelessWidget {
                 )
               ],
             ),
-            CustomButton(
-              text: 'Daftar',
-              onTap: () {
-                Navigator.pushNamed(context, '/main-page');
-              },
-            ),
+            (isLoading)
+                ? LoadingButton()
+                : CustomButton(
+                    text: 'Daftar',
+                    onTap: handleSignUp,
+                  ),
             SizedBox(
               height: 36,
             ),

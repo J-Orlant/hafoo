@@ -1,7 +1,8 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
+import 'package:hafoo/provider/product_provider.dart';
 import 'package:hafoo/theme.dart';
+import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreeen extends StatefulWidget {
   const SplashScreeen({Key? key}) : super(key: key);
@@ -13,11 +14,22 @@ class SplashScreeen extends StatefulWidget {
 class _SplashScreeenState extends State<SplashScreeen> {
   @override
   void initState() {
-    Timer(
-        Duration(seconds: 2),
-        () => Navigator.pushNamedAndRemoveUntil(
-            context, '/welcome', (route) => false));
+    getInit();
     super.initState();
+  }
+
+  getInit() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    if (prefs.containsKey('token')) {
+      await Provider.of<ProductProvider>(context, listen: false)
+          .getProducts()
+          .whenComplete(() {
+        Navigator.pushNamedAndRemoveUntil(
+            context, '/main-page', (route) => false);
+      });
+    } else {
+      Navigator.pushNamedAndRemoveUntil(context, '/welcome', (route) => false);
+    }
   }
 
   @override
